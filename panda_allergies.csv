@@ -1,0 +1,31 @@
+product,soy,wheat,nuts,fish,eggs
+chow mein ,1,1,0,0,0
+fried rice,1,1,0,0,0
+brown rice,0,0,0,0,0
+white rice ,0,0,0,0,0
+super greens ,1,1,0,0,0
+black pepper chicken,1,1,0,0,0
+kung pao chicken,1,1,1,0,0
+grilled teriyaki chicken,1,1,0,0,0
+grilled asian chicken,1,1,0,0,0
+mushroom chicken,1,1,0,0,0
+orange chicken,1,1,0,0,1
+string bean chicken breast,1,1,0,0,0
+sweet fire chicken breast ,0,1,0,0,0
+sweet and sour chicken breast,0,1,0,0,0
+broccoli beef,1,1,0,0,0
+shanghai angus beef,1,1,0,0,0
+firecracker shrimp,1,1,0,0,0
+honey walnut shrimp,1,1,1,0,1
+chicken egg roll,1,1,0,0,1
+cream cheese rangoon,0,1,0,0,1
+vegetable spring roll,1,1,0,0,0
+hot and sour soup,1,1,0,0,1
+teriyaki sauce,1,1,0,0,0
+sweet an sour sauce ,0,0,0,0,0
+chili sauce,0,0,0,0,0
+soy sauce,1,1,0,0,0
+potsticker sauce,1,1,0,0,0
+hot mustard,0,0,0,0,0
+plum sauce ,0,0,0,0,0
+chocolate chip chunk cookie ,1,1,0,0,1
