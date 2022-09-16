@@ -41,17 +41,22 @@ root.mainloop()"""
 #project start
 import pandas as pd
 from tkinter import *
-from tkinter import messagebox
+#from tkinter import messagebox
 import tkinter
 
+"""
 master = tkinter.Tk()
+master.geometry("750x250")
 
 def var_states():
    print("Your Allergies: soy: %d wheat: %d nuts: %d fish: %d eggs: %d" % 
         (var1.get(),  var2.get(), var3.get(), var4.get(), var5.get()))
 
 def open_window():
-    messagebox.showinfo(title = "Your Allergies", message = var_states())
+    Label(master, text="Confirm the list below: ", font=('Helvetica 17 bold')).pack(pady=30)
+    #messagebox.showinfo(title = "Your Allergies", message = var_states())
+    Button(master, text="Confirm", command=var_states()).grid(row=1, sticky=W, pady=4)
+
 
 Label(master, text="Check all your known allergies:").grid(row=0, sticky=W)
 var1 = IntVar()
@@ -70,28 +75,35 @@ Button(master, text='Next', command=open_window).grid(row=6, sticky=W, pady=4)
 Button(master, text='Quit', command=quit).grid(row=7, sticky=W, pady=4)
 
 
-mainloop()
+mainloop()"""
 
 restaurant_choice = "Cane's" 
-#print("Hello welcome to ",restaurant_choice,". Choose from one of the following options: ")
+print("Hello welcome to ",restaurant_choice,". Choose from one of the following options: ")
 df = pd.read_csv('canes_allergies.csv')
 
 #printing column names
-"""tally = 1
+tally = 1
 for col in df.columns:
     print(tally,".",col)
-    tally += 1"""
+    tally += 1
 
+#allergen1 = "soy"
+#allergen2 = "wheat"
 #menu_category is a string holding a number choice
 #menu_category = input("") 
-print("Here are your options: ")
 
+print("Here are your options: ")
+index = 0
 for row in df["soy"]:
-    print(row)
+    if(df.at[index,"soy"] == 0):
+        print(df.at[index, "product"])
+    index += 1
+        
 
 
 #Possibly to display table on tkinter
-"""rows = []
+"""
+rows = []
 for i in range(5):
     cols = []
     for j in range(4):
