@@ -1,7 +1,8 @@
 # Ariadne Rincon
 # File where I am practicing how to make and customize frames with tkinter
 # PROJECT START
-import tkinter as tk                
+import tkinter as tk    
+import pandas as pd            
 from tkinter import font as tkfont
 
 #Shared details for all classes
@@ -55,11 +56,12 @@ class AllergyPage(tk.Frame):
         fish.pack()
         eggs.pack()
 
-        button1 = tk.Button(self, text="Confirm Choices",
+        confirm_button = tk.Button(self, text="Confirm Choices",
                             command=lambda: controller.show_frame("FoodSelectionPage"))
-        button2 = tk.Button(self, text="Quit",command = quit)
-        button1.pack()
-        button2.pack()
+        quit_button = tk.Button(self, text="Quit",command = quit)
+
+        confirm_button.pack()
+        quit_button.pack()
 
 #Frame with Food Options
 class FoodSelectionPage(tk.Frame):
@@ -72,14 +74,22 @@ class FoodSelectionPage(tk.Frame):
 
         canes = tk.Radiobutton(self, text = "Canes", value = 1)
         panda = tk.Radiobutton(self, text = "Panda Express", value = 2)
+        popeyes = tk.Radiobutton(self, text = "Popeyes", value = 3)
+        mcd = tk.Radiobutton(self, text = "McDonald's", value = 4)
+        cfa = tk.Radiobutton(self, text = "Chick-Fil-A", value = 5)
+
         canes.pack()
         panda.pack()
+        popeyes.pack()
+        mcd.pack()
+        cfa.pack()
 
-        button1 = tk.Button(self, text="Next",
+        next_button = tk.Button(self, text="Next",
                            command=lambda: controller.show_frame("OptionsPage"))
-        button2 = tk.Button(self, text="Quit",command = quit)
-        button1.pack()
-        button2.pack()
+        quit_button = tk.Button(self, text="Quit",command = quit)
+
+        next_button.pack()
+        quit_button.pack()
 
 #Frame with Safe Food Options
 class OptionsPage(tk.Frame):
@@ -89,11 +99,25 @@ class OptionsPage(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="Here are the Allergen-Free Options for You:", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button1 = tk.Button(self, text="Back",
+
+        T = tk.Text(self, height = 5, width = 52)
+        df = pd.read_csv('canes_allergies.csv')
+        safe_foods = []
+        index = 0
+        for row in df["eggs"]:
+            if(df.at[index,"eggs"] == 0):
+                safe_foods.append(df.at[index, "product"])
+            index += 1
+
+        back_button = tk.Button(self, text="Back",
                            command=lambda: controller.show_frame("FoodSelectionPage"))
-        button2 = tk.Button(self, text="Quit",command = quit)
-        button1.pack()
-        button2.pack()
+        quit_button = tk.Button(self, text="Quit",command = quit)
+
+        T.pack()
+        back_button.pack()
+        quit_button.pack()
+
+        T.insert(tk.END, safe_foods)
 
 #Keep Program Running 
 if __name__ == "__main__":
