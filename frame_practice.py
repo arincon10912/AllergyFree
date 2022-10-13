@@ -1,9 +1,11 @@
 # Ariadne Rincon
 # File where I am practicing how to make and customize frames with tkinter
 # PROJECT START
-import tkinter as tk    
+from distutils.command.bdist import show_formats
+from re import S
+import tkinter as tk
 import pandas as pd            
-from tkinter import font as tkfont
+from tkinter import CENTER, BooleanVar, font as tkfont
 
 #Shared details for all classes
 class SampleApp(tk.Tk):
@@ -13,7 +15,15 @@ class SampleApp(tk.Tk):
 
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold")
 
-        container = tk.Frame(self)
+        self.chosen_allergens = []
+        s = False
+        w = False
+        n = False
+        f = False
+        e = False
+
+
+        container = tk.Frame(self)  
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
@@ -32,6 +42,13 @@ class SampleApp(tk.Tk):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
+    
+    def display_input(self, var1, var2, var3, var4, var5):
+        print(var1.get())
+        print(var2.get())
+        print(var3.get())
+        print(var4.get())
+        print(var5.get())
 
 #Frame with checkboxes
 class AllergyPage(tk.Frame):
@@ -43,24 +60,34 @@ class AllergyPage(tk.Frame):
         label = tk.Label(self, text="Check all your known allergies:", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         
-        #s = tk.IntVar() this may work to save variable?
-        soy = tk.Checkbutton(self, text="soy")
-        wheat = tk.Checkbutton(self, text="wheat")
-        nuts = tk.Checkbutton(self, text="nuts")
-        fish = tk.Checkbutton(self, text="fish")
-        eggs = tk.Checkbutton(self, text="eggs")
+        soy = BooleanVar()
+        wheat = BooleanVar()
+        nuts = BooleanVar()
+        fish = BooleanVar()
+        eggs = BooleanVar()
 
-        soy.pack()
-        wheat.pack()
-        nuts.pack()
-        fish.pack()
-        eggs.pack()
+        c1 = tk.Checkbutton(self, text="soy", variable=soy)
+        c2 = tk.Checkbutton(self, text="wheat", variable=wheat)
+        c3 = tk.Checkbutton(self, text="nuts", variable=nuts)
+        c4 = tk.Checkbutton(self, text="fish", variable=fish)
+        c5 = tk.Checkbutton(self, text="eggs", variable=eggs)
 
+        c1.pack()
+        c2.pack()
+        c3.pack()
+        c4.pack()
+        c5.pack()
+
+        # must be a seperate button to call on display_input
+        # will show boolean values of the checkbox choices in order 
         confirm_button = tk.Button(self, text="Confirm Choices",
+                            command=lambda: controller.display_input(soy, wheat, nuts, fish, eggs))
+        next_button = tk.Button(self, text="Next",
                             command=lambda: controller.show_frame("FoodSelectionPage"))
         quit_button = tk.Button(self, text="Quit",command = quit)
 
         confirm_button.pack()
+        next_button.pack()
         quit_button.pack()
 
 #Frame with Food Options
@@ -101,11 +128,18 @@ class OptionsPage(tk.Frame):
         label.pack(side="top", fill="x", pady=10)
 
         T = tk.Text(self, height = 5, width = 52)
+
         df = pd.read_csv('canes_allergies.csv')
+        user_allergens = ["soy", "wheat"]
         safe_foods = []
+    
         index = 0
-        for row in df["eggs"]:
-            if(df.at[index,"eggs"] == 0):
+        # will print all the items that do NOT contain the allergen
+        # need to work on how this will adapt when there are changing number of allergens 
+        # ex. user is only allergic to "soy" VS "soy", "eggs", "wheat"
+        # need to add more conditions to if statement
+        for row in df["soy"]:
+            if((df.at[index,"nuts"]==0) and (df.at[index,"eggs"]==0) and (df.at[index,"fish"]==0)):
                 safe_foods.append(df.at[index, "product"])
             index += 1
 
