@@ -1,0 +1,47 @@
+product,soy,wheat,nuts,fish,eggs
+Chicken Wing,0,1,0,0,1
+Spicy Chicken Wing,0,1,0,0,1
+Chicken Tenders,0,1,0,0,1
+Loaded Chicken Wrap,0,1,0,0,1
+Naked Chicken Wrap,0,1,0,0,0
+Chicken Poboy,1,1,1,0,1
+Shrimp Poboy,1,1,1,1,1
+Naked BBQ Chicken Poboy,0,1,1,0,0
+Chicken & Sausage Jumbalaya,1,1,0,0,0
+Chicken Livers,0,1,0,0,1
+Popcorn Shrimp,1,1,0,1,1
+Butterfly Shrimp,1,1,0,1,1
+Catfish Filet,1,1,0,1,1
+Naked Tenders,0,0,0,0,0
+Baguette,1,1,0,0,0
+Green Beans,1,1,0,0,0
+Getup & Geuax,1,1,0,0,0
+Biscuit,1,1,0,0,0
+Chedder Tortilla,0,1,0,0,0
+Cajun Fries,0,1,0,0,0
+Corn on the Cob,0,0,0,0,0
+Mac & Cheese,1,1,0,0,1
+Mashed Potatoes,1,1,0,0,0
+Redbeans & Rice,1,1,0,1,0
+Cajun Rice,1,1,0,0,0
+Coleslaw,1,1,0,1,0
+Onion Rings,1,1,0,0,1
+Jalapenos,0,0,0,0,0
+Applesauce,0,0,0,0,0
+Hot Cnm Applepie,1,1,0,0,0
+Mississipi Mudpie,1,1,0,0,1
+Mardigras Cheesecake,1,1,0,0,1
+Sliced Pecan Pie,1,1,1,0,1
+Hot Sweet Potato Pie,1,1,0,0,1
+PB Banana Pie,1,1,0,0,1
+Coke,0,0,0,0,0
+Diet Coke,0,0,0,0,0
+Sprite,0,0,0,0,0
+Fanta Strawberry,0,0,0,0,0
+Fanta Orange,0,0,0,0,0
+Hawaiian Punch,0,0,0,0,0
+Mountain Dew,0,0,0,0,0
+Pepsi,0,0,0,0,0
+Diet Pepsi,0,0,0,0,0
+Unsweetened Tea,0,0,0,0,0
+Sweet Tea,0,0,0,0,0
