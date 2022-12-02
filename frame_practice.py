@@ -17,7 +17,7 @@ class SampleApp(tk.Tk):
         self.chosen_allergens = []
         self.allergen_list = ["soy", "wheat", "nuts", "fish", "eggs"]
         self.food_list = ["Canes", "Panda Express", "Popeyes", "McDonald's", "Chick-Fil-A"]
-        self.csv_list = ["canes_allergens.csv", "panda_allergies.csv", "popeyes.csv"] #need to make mcd and cfa allergen csv and include here !!
+        self.csv_list = ["canes_allergies.csv", "panda_allergies.csv", "popeyes_allergies.csv", "cfa_allergies.csv", "mcd_allergies.csv"] #need to make mcd and cfa allergen csv and include here !!
         self.boolean_list = [False, False, False, False, False]
 
         self.r = 0
@@ -61,7 +61,6 @@ class SampleApp(tk.Tk):
     # Function to transform int value to string of restaurant name 
     def set_radio(self, var1):
         self.r = var1.get()
-        print(self.food_list[(var1.get()-1)])
 
     # Function to display a text widget with list of safe foods 
     def return_options(self):
@@ -70,14 +69,30 @@ class SampleApp(tk.Tk):
         safe_foods = []
         T = tk.Text(self, height = 5, width = 52)
 
-        # will print all the items that do NOT contain the allergen
-        # need to work on how this will adapt when there are changing number of allergens 
-        # ex. user is only allergic to "soy" VS "soy", "eggs", "wheat"
-        # need to add more conditions to if statement
         index = 0
-        for item in self.chosen_allergens:
+        if len(self.chosen_allergens) == 1:
             for row in df["soy"]:
-                if(df.at[index, item]==0):
+                if(df.at[index, self.chosen_allergens[0]]==0):
+                    safe_foods.append([df.at[index, "product"]])
+                index += 1
+        elif len(self.chosen_allergens) == 2:
+            for row in df["soy"]:
+                if(df.at[index, self.chosen_allergens[0]]==0) and (df.at[index, self.chosen_allergens[1]]==0):
+                    safe_foods.append([df.at[index, "product"]])
+                index += 1
+        elif len(self.chosen_allergens) == 3:
+            for row in df["soy"]:
+                if(df.at[index, self.chosen_allergens[0]]==0) and (df.at[index, self.chosen_allergens[1]]==0) and (df.at[index, self.chosen_allergens[2]]==0):
+                    safe_foods.append([df.at[index, "product"]])
+                index += 1
+        elif len(self.chosen_allergens) == 4:
+            for row in df["soy"]:
+                if(df.at[index, self.chosen_allergens[0]]==0) and (df.at[index, self.chosen_allergens[1]]==0) and (df.at[index, self.chosen_allergens[2]]==0) and (df.at[index, self.chosen_allergens[3]]==0):
+                    safe_foods.append([df.at[index, "product"]])
+                index += 1
+        elif len(self.chosen_allergens) == 5:
+            for row in df["soy"]:
+                if(df.at[index, self.chosen_allergens[0]]==0) and (df.at[index, self.chosen_allergens[1]]==0) and (df.at[index, self.chosen_allergens[2]])==0 and (df.at[index, self.chosen_allergens[3]]==0) and (df.at[index, self.chosen_allergens[4]]==0):
                     safe_foods.append([df.at[index, "product"]])
                 index += 1
         T.pack()
